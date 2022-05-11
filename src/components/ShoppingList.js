@@ -2,23 +2,18 @@ import React, { useState } from "react";
 import Item from "./Item";
 
 function ShoppingList({ items }) {
-  const [filterProduce, setFilterProduce] = useState(false);
-  const [filterDessert, setFilterDessert] = useState(false);
-  const [filterDairy, setFilterDairy] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState("All");
 
   function filtered(event) {
-    if (filterProduce) {
-      setFilterProduce((filterProduce) => !filterProduce);
-      setSelectedCategory((selectedCategory) => !selectedCategory);
-    } else if (filterDessert) {
-      setFilterDessert((filterDessert) => !filterDessert);
-    } else if (filterDairy) {
-      setFilterDairy((filterDairy) => !filterDairy);
+    const selected = event.target.value;
+    if (selected == "Produce") {
+      setSelectedCategory((selectedCategory = "Produce"));
+    } else if (selected == "Dairy") {
+      setSelectedCategory((selectedCategory = "Dairy"));
+    } else if (selected == "Dessert") {
+      setSelectedCategory((selectedCategory = "Dessert"));
     }
   }
-
-  // let selectedCategory = getEl
 
   return (
     <div className="ShoppingList">
